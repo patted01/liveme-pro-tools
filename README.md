@@ -66,6 +66,9 @@ Run the electron frontend:
 npm run start
 ```
 
+##### Run with debugger
+ Use the debugger from VSCode and choose in the dropdown if you want to debug the electron or the dotnet core app.
+
 #### Create releases
 For creating a release for all supported plattfroms run:
 ```
@@ -74,8 +77,7 @@ npm run release
 Their are also npm scripts for only creating a release for one specific platfrom
 
 
-##### Run with debugger
- Use the debugger from VSCode and choose in the dropdown if you want to debug the electron or the dotnet core app.
+
 
 
 
