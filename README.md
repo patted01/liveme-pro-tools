@@ -40,6 +40,46 @@ A long time ago, TheCoder wanted to release an actual desktop app that wasn't bu
 ### Contributing
 If you find any bugs or would like to help add features or additional functions, please create a pull request for review and I'll add them if they don't break anything.
 
+### Contributing - Getting Started
+#### Prerequisits
+- NodeJS (verify correct installation by typing `node --version` in your console)
+- Dotnet core SDK (verify correct installation by typing `dotnet --version` in your console)
+
+#### Tools
+- IDE: We provide a `.vscode/launch.json` file which contains launch commands for debugging the electron main process or the dotnet core backend. So if your don't have any better tools, just download and use VSCode.
+- If using Vscode, you probably should also install the C# extension available.
+- For testing out the dotnet core REST API, Postman is a good free tool to do so.
+
+#### Install / Run
+Run in the root directory
+```
+npm install 
+```
+
+##### Run without debugger
+To run the core backend:
+```
+npm run start-core 
+```
+Run the electron frontend:
+```
+npm run start
+```
+
+#### Create releases
+For creating a release for all supported plattfroms run:
+```
+npm run release
+```
+Their are also npm scripts for only creating a release for one specific platfrom
+
+
+##### Run with debugger
+ Use the debugger from VSCode and choose in the dropdown if you want to debug the electron or the dotnet core app.
+
+
+
+
 ### Contributors
 * [thecoder75](https://notabug.com/thecoder75)
 * [zp](https://github.com/zp)
