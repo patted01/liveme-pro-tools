@@ -19,6 +19,7 @@ const isDev = require('electron-is-dev')
 const ffmpeg = require('fluent-ffmpeg')
 const async = require('async')
 
+
 let mainWindow = null
 let playerWindow = null
 let bookmarksWindow = null
@@ -27,6 +28,11 @@ let wizardWindow = null
 let homeWindow = null
 let menu = null
 let appSettings = require('electron-settings')
+const coregateway = require("./coreGateway")
+let startedcore = coregateway.start()
+
+
+
 
 function createWindow () {
     let isFreshInstall = appSettings.get('general.fresh_install') == null
@@ -152,6 +158,14 @@ function createWindow () {
     /**
      * Configure our window contents and callbacks
      */
+
+    // console.log("foo")
+    // coregateway.start().then(x => {
+    //    ipcMain.send("popup-message", "successful stared core")
+    // }).catch( x=>{
+    //     ipcMain.send("popup-message", "successful stared core")
+    // })
+
     mainWindow.loadURL(`file://${__dirname}/app/index.html`)
     mainWindow
         .on('open', () => {})
@@ -211,6 +225,7 @@ function createWindow () {
     global.LiveMe = LiveMe
     global.DataManager = DataManager
     global.Blacklist = Blacklist
+    global.CoreGateway = coregateway
 
     DataManager.loadFromDisk()
 
@@ -227,6 +242,11 @@ function createWindow () {
         wizardWindow.show()
     } else {
         mainWindow.show()
+        setTimeout(async () => {
+            let rs = await startedcore;
+            mainWindow.webContents.send('popup-message',{text: "LMPT Core: " + rs } )
+
+        }, 2000)
 
         let pos = appSettings.get('position.mainWindow').length > 1 ? appSettings.get('position.mainWindow') : [null, null]
         if (pos[0] != null) {
