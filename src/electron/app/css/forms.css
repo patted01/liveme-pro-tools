@@ -87,7 +87,13 @@ a.button, button, input[type=button] {
     cursor: pointer;
     outline: none;
 }
-a.button:hover {
+
+.button:hover {
+    color: rgb(255,255,255);
+    background-color: rgb(64,64,64);
+}
+
+button:hover {
     color: rgb(255,255,255);
     background-color: rgb(64,64,64);
 }
