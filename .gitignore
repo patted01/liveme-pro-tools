@@ -3,7 +3,6 @@ obj
 bin
 /.git/*
 /dist/
-/.vscode/
 
 
 package-lock.json
