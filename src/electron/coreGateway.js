@@ -35,15 +35,7 @@ async function shutdown(){
 async function startApi() {
     console.log("Checking LMPT Core");
 
-    var apiIsRunning = false;
-
-    try {
-        var res = await fetch(HOST + "/api/healthcheck");
-        apiIsRunning = res.status == 200;
-    } catch (e) {
-        // backend is not running, so we keep apiIsRunning = false
-    }
-
+    var apiIsRunning = await healthCheck()
     if (apiIsRunning) {
         console.log("LMPT Core is running on 5050");
         return "was running already";
@@ -67,12 +59,12 @@ async function startApi() {
             //console.log(`stderr: ${data}`);
         });
 
-
-        return new Promise(function(resolve, reject) {
+        return new Promise((resolve, reject) => {
             apiProcess.stdout.on("data", data => {
                 LogEmitter.emit('event', data);
                 const expectedOutput = `Now listening on: http://localhost:${PORT}`      
-                // not sure if there is a better way.
+                // There must be a better way.
+                // We check the console output until we get the message it is listening now.
                 if (data.toString().includes(expectedOutput)) {
                     resolve("Successfully started background process.");
                 }
