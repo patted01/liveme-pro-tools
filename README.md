@@ -57,11 +57,17 @@ npm install
 ```
 
 ##### Run without debugger
-To run the core backend:
+1. Starting backend:
 ```
 npm run start-core 
 ```
-Run the electron frontend:
+or if you want that the backend restart if file changes are detected, instead run:
+```
+npm run watch-core 
+```
+> The background process is called: LMPT.Core (only if you run a released app). The localhost port will be 5050.
+
+2. Run the electron frontend:
 ```
 npm run start
 ```
