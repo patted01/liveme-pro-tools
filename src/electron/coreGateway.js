@@ -50,20 +50,23 @@ async function startApi() {
     }
 
     try {
-        //  run server
-        var apipath = path.join(__dirname, "..\\core\\bin\\dist\\win\\LMPT.core.exe");
-        if (os.platform() === "darwin") {
-            apipath = path.join(__dirname, "..//core//bin//dist//osx//LMPT.core");
+        switch (os.platform()) {
+            case "darwin": // macOS
+                apipath = path.join(__dirname, "..//core//bin//dist//osx//LMPT.core");
+                break;
+            case "linux": // linux
+                apipath = path.join(__dirname, "..//core//bin//dist//linux//LMPT.core");
+                break;
+            default: // windows
+                var apipath = path.join(__dirname, "..\\core\\bin\\dist\\win\\LMPT.core.exe");
+                break;
         }
+        //  run server    
         apiProcess = proc(apipath);
-
         apiProcess.stderr.on("data", data => {
             //console.log(`stderr: ${data}`);
         });
 
-        apiProcess.on("close", code => {
-            console.log(`child process exited with code ${code}`);
-        });
 
         return new Promise(function(resolve, reject) {
             apiProcess.stdout.on("data", data => {
