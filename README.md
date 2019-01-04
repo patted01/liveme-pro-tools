@@ -2,6 +2,7 @@
 
 **A big thank you to all those who are now contributing to help make this tool even better!**
 
+
 ### Support/Assistance/Reporting Issues
 I've re-enabled the Issue Tracker here.  Please use it **ONLY** to report bugs or feature requests.
 
@@ -18,13 +19,20 @@ Its an [Electron](https://electronjs.org) based application for Live.me Social V
 - Allows downloading of replays using FFMPEG
 - Supports [LAMD](https://notabug.org/thecoder75/lamd)
 
+
 ### Building LiveMe Pro Tools
 
 **Instructions can be found in the DOCS folder on building the various branches of this project.**
 
 ### Prebuilt Releases (64-bit only!)
-
 To download the latest prebuilt versions, [click here](releases).
+#### Running the 1.5xx Prerelease
+
+For windows 7 users please follow:
+In addition to KB2999226, make sure you also have KB2533623 installed. 
+https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites?tabs=netcore2x#net-core-dependencies
+
+
 
 **Current Supported Platforms:**
 - Ubuntu-based Linux and Debian Distributions (64-bit)

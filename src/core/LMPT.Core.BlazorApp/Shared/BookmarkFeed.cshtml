@@ -162,7 +162,7 @@
     }
 
     async Task UpdateBookmark(Bookmark bookmark, LiveMeUser liveMeUser){
-        bookmark.Counts.Replays = liveMeUser.CountInfo.ReplayCount;
+        bookmark.Counts.Replays = liveMeUser.CountInfo.VideoCount;
         bookmark.Counts.Friends = liveMeUser.CountInfo.FriendsCount;
         bookmark.Counts.Followers = liveMeUser.CountInfo.FollowerCount;
         bookmark.Counts.Followings = liveMeUser.CountInfo.FollowingCount;
